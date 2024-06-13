@@ -1,5 +1,5 @@
 import {
-  Router,
+  Route,
   createBrowserRouter,
   createRoutesFromElements,
   RouterProvider,
@@ -11,19 +11,11 @@ import JobListings from "./components/JobListings";
 import ViewAllJobs from "./components/ViewAllJobs";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route index element={<h1>my app</h1>} />)
+  createRoutesFromElements(<Route path="/about" element={<h1>my app</h1>} />)
 );
 
 const App = () => {
-  return (
-    <>
-      <Navbar />
-      <Hero />
-      <HomeCards />
-      <JobListings />
-      <ViewAllJobs />
-    </>
-  );
+  return <RouterProvider router={router} />;
 };
 
 export default App;
