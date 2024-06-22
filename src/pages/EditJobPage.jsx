@@ -1,7 +1,6 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-const AddJobPage = ({ addJobSubmit }) => {
+import { useParams, useLoaderData, useNavigate } from "react-router-dom";
+
+const EditJobPage = () => {
   const [title, setTitle] = useState("");
   const [type, setType] = useState("Full-Time");
   const [location, setLocation] = useState("");
@@ -11,31 +10,7 @@ const AddJobPage = ({ addJobSubmit }) => {
   const [companyDescription, setCompanyDescription] = useState("");
   const [contactEmail, setContactEmail] = useState("");
   const [contactPhone, setContactPhone] = useState("");
-
-  const navigate = useNavigate();
-
-  const submitForm = (e) => {
-    e.preventDefault();
-    const newJob = {
-      title,
-      type,
-      location,
-      description,
-      salary,
-      company: {
-        name: companyName,
-        description: companyDescription,
-        contactEmail,
-        contactPhone,
-      },
-    };
-    addJobSubmit(newJob);
-    toast.success("job done");
-    console.log(newJob);
-    // toast.success("Job Added Successfully");
-
-    return navigate("/jobs");
-  };
+  const job = useLoaderData();
 
   return (
     <>
@@ -236,5 +211,4 @@ const AddJobPage = ({ addJobSubmit }) => {
     </>
   );
 };
-
-export default AddJobPage;
+export default EditJobPage;
